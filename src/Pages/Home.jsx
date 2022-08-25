@@ -4,6 +4,7 @@ import Cards from '../Components/Cards';
 
 
 
+
 const Home = () => {
     const [url,setUrl]= useState("https://pokeapi.co/api/v2/pokemon/")
     const estado = useAxios(url)
@@ -17,7 +18,7 @@ const Home = () => {
     return (
         <div className='overflow-hidden'>
             <div className='border-b-2 py-2 w-screen px-4 bg-white'>
-                <nav className='flex items-center gap-6 '>
+                <nav className='flex items-center gap-6'>
                     <div className='w-14 h-14'>
                         <img src="https://res.cloudinary.com/dzsd7vfjr/image/upload/v1661293802/Proyecto_Pokemon/Pok%C3%A9_Ball_icon.svg_niwgze.png" alt="" />
                     </div>
@@ -34,11 +35,12 @@ const Home = () => {
                 </nav>
 
             </div>
+
             <div className='flex m-auto w-4/5 h-full py-16 px-28  gap-28  flex-wrap'>
                 {
                     cargando || cargando2
                     ?
-                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                     :
                     <Cards results={data.results} results2={data2.results}/>
                 }

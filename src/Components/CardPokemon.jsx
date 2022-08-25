@@ -1,7 +1,7 @@
 import { Spinner } from 'flowbite-react'
 import React, { useState } from 'react'
 import { useAxios } from '../Hooks/UseAxios'
-
+import { Link } from "react-router-dom";
 
 const CardPokemon = ({ url, urlEspecie }) => {
     const estado = useAxios(url)
@@ -9,7 +9,9 @@ const CardPokemon = ({ url, urlEspecie }) => {
     const { cargando, data } = estado
     const {cargando: cargando2, data:data2} = estado2
   
-   
+   const handleClick = () =>{
+    localStorage.setItem('idPokemon', data.id)
+   }
 
     return (
         <div>
@@ -18,8 +20,10 @@ const CardPokemon = ({ url, urlEspecie }) => {
                     ?
                     <Spinner aria-label="Extra large spinner example" size="xl" />
                     :
-                    <div className='border-2  rounded-lg w-44 h-72 hover:shadow-[0px_0px_27px_-4px_rgba(0,0,0,0.75)] transition-all duration-500 hover:scale-125 cursor-pointer' 
-                        style={data2.color.name==="white" ? {"borderColor": "gray", "backgroundColor": "#f1f5f9" }:{"borderColor": data2.color.name, "backgroundColor": "#f1f5f9" }}>
+                    <Link to={`/pokemon/${data.id}`}><div className='border-2  rounded-lg w-44 h-72 hover:shadow-[0px_0px_27px_-4px_rgba(0,0,0,0.75)] transition-all duration-500 hover:scale-125 cursor-pointer' 
+                        style={data2.color.name==="white" ? {"borderColor": "gray", "backgroundColor": "#f1f5f9" }:{"borderColor": data2.color.name, "backgroundColor": "#f1f5f9" }}
+                        onClick={handleClick}
+                        >
                         
                         <div className='rounded-lg flex justify-center items-center h-2/4 w-full overflow-hidden bg-blob bg-center bg-no-repeat bg-cover' style={{ }}>
                             <img src={data.sprites.other.home.front_default} alt="" className='h-36 w-36 object-cover' />
@@ -35,7 +39,7 @@ const CardPokemon = ({ url, urlEspecie }) => {
                                 null
                             }
                         </div>
-                    </div>
+                    </div></Link>
                     
             }
         </div>
