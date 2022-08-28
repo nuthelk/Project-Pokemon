@@ -11,6 +11,14 @@ const CardPokemon = ({ url, urlEspecie }) => {
   
    const handleClick = () =>{
     localStorage.setItem('idPokemon', data.id)
+    if(data2.evolves_from_species){
+        let url = data2.evolves_from_species.url
+        url = url.replace('pokemon-species', 'pokemon')
+        localStorage.setItem('urlEvolucion', url)
+    }else{
+        localStorage.removeItem('urlEvolucion')
+    }
+    
    }
 
     return (
@@ -30,11 +38,12 @@ const CardPokemon = ({ url, urlEspecie }) => {
                         </div>
                         <div className='flex flex-col items-center mt-4 gap-2 mx-2 h-2/5 justify-center rounded-lg bg-white shadow-sm'>
                             <p className='italic font-medium rounded-md text-gray-800  px-4  capitalize'>#{data.id}{" "}{data.forms[0].name}</p>
-                            <p className='italic font-medium rounded-md text-black px-4  capitalize'>{data.types[0].type.name}</p>
+                            <p className='italic font-medium rounded-md text-black px-4  capitalize'>{data.types[0].type.name}{data.types[1]?`, ${data.types[1].type.name}`:null}</p>
                             {   
-                                data.types[1]
+                                data2.evolves_from_species!==null
                                 ?
-                                <p className='italic font-medium rounded-md text-black  px-4 capitalize'>{data.types[1].type.name}</p>
+                                <p className='italic font-medium rounded-md text-black  px-4 capitalize texto-borde' 
+                                style={data2.color.name==="white" ?{"color": "gray"}:{"color": data2.color.name}}>Evo: {data2.evolves_from_species.name}</p>
                                 :
                                 null
                             }

@@ -1,16 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Detalles from '../Pages/Detalles'
-import Home from '../Pages/Home'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import RoutesAnimation from './RoutesAnimation'
 
 const AppRoutes = () => {
+  
+
   return (
-    <BrowserRouter >
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/pokemon/:id" element={<Detalles />} />
-      </Routes>
+    <BrowserRouter>
+      <RoutesAnimation />
     </BrowserRouter>
+
   )
 }
 

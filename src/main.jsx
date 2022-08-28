@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import { ContextProvider } from './context/ContextProvider'
 import './index.css'
+import { Provider } from "react-redux";
+import { store } from "./Redux/Store/store";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
-    <ContextProvider>
-    <App />
-    </ContextProvider>
+    <Provider store={store}>
+        <ContextProvider>
+            <App />
+        </ContextProvider>
+    </Provider>
 
 )

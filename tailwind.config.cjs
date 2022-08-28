@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         blob: "url('../src/img/blob.svg')",
+        bgLogin: "url('../src/img/blob2.svg')"
       },
     },
   },
